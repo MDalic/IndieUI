@@ -7,7 +7,6 @@ function playerFrameChanges(self)
     PlayerFrameTexture:Hide()
     PlayerFrameHealthBar:ClearAllPoints()
     PlayerFrameManaBar:ClearAllPoints()
-
     PlayerFrameHealthBar:SetHeight(12)
     PlayerFrameManaBar:SetHeight(12)
     PlayerFrameHealthBar:SetPoint("RIGHT",PlayerFrame,"RIGHT",-3,14)
@@ -193,7 +192,7 @@ manaBarFoc:SetBackdrop( {
 });
 manaBarFoc:SetBackdropColor(0, 0, 1,0.5)
 manaBarFoc:SetBackdropBorderColor(0, 0, 1,1)
-
+--PET--------------
 PetFrameTexture:Hide()
 PetFrameHealthBarText:SetAlpha(0)
 PetFrameManaBarText:SetAlpha(0)
@@ -203,6 +202,31 @@ PetFrameManaBarTextLeft:SetAlpha(0)
 PetFrameManaBarTextRight:SetAlpha(0)
 
 PetPortrait:Hide()
+PetFrameHappiness:ClearAllPoints()
+PetFrameHappiness:SetPoint("RIGHT",PetFrame,"RIGHT",15,1)
+
+
+local PetHappBk = CreateFrame("Frame", nil, PetFrameHappiness, "BackdropTemplate")
+PetHappBk:SetPoint("CENTER",PetFrameHappiness,"CENTER",0,0)
+PetHappBk:SetParent(PetFrameHappiness)
+PetHappBk:SetScale(1)
+PetHappBk:SetWidth(21)
+PetHappBk:SetHeight(21)
+PetHappBk:SetBackdrop({
+	bgFile = "Interface/Tooltips/UI-Tooltip-Background",
+	edgeSize = 0,
+})
+PetHappBk:SetFrameStrata("BACKGROUND")
+PetHappBk:SetBackdrop( { 
+    bgFile = "bgFile", 
+    edgeFile = "edgeFile", tile = false, tileSize = 0, edgeSize = 0,
+    edgeSize = 2.5,
+    insets = { left = 1, right =0, top = 0.5, bottom = 0 }
+});
+PetHappBk:SetBackdropColor(0, 0, 1,0)
+PetHappBk:SetBackdropBorderColor(0, 0, 1,1)
+PetHappBk:SetFrameStrata("LOW")
+
 
 
 local petHpBarBk = CreateFrame("Frame", nil, PetFrameHealthBar, "BackdropTemplate")
@@ -295,7 +319,7 @@ PlayerFrameBK:SetBackdropColor(0,0,0,0)
 PlayerFrameBK:SetBackdropBorderColor(0,0,0,0)
 PlayerFrameBK.tex = PlayerFrameBK:CreateTexture("Interface/Tooltips/UI-Tooltip-Background")
 PlayerFrameBK.tex:SetAllPoints(PlayerFrameBK)
-PlayerFrameBK.tex:SetSize(45,45)
+PlayerFrameBK.tex:SetSize(72,72)
 PlayerFrameBK.tex:SetColorTexture(0,0,0,1);
 PlayerFrameBK.mask = PlayerFrameBK:CreateMaskTexture()
 PlayerFrameBK.mask:SetAllPoints(PlayerFrameBK.tex)
