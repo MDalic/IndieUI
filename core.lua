@@ -409,7 +409,7 @@ hooksecurefunc("HealthBar_OnValueChanged", function(self)
     colour(self, self.unit)
 end)
 hooksecurefunc("PlayerFrame_UpdateStatus", function() if IsResting("player") then PlayerStatusTexture:Hide() PlayerRestGlow:Hide() PlayerStatusGlow:Hide() end end)
-PlayerAttackGlow:SetTexture()
+hooksecurefunc("PLAYER_ENTER_COMBAT",function() PlayerAttackGlow:Hide()end);
 
 
 
