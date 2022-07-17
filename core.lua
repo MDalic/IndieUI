@@ -13,70 +13,6 @@ function playerFrameChanges(self)
     PlayerFrameHealthBar:SetPoint("RIGHT",PlayerFrame,"RIGHT",-3,14)
     PlayerFrameManaBar:SetPoint("BOTTOM",PlayerFrameHealthBar,"BOTTOM",0,-14)
 
-
-    --PlayerFrameBorder----------
-    local PlayerFrameBK = CreateFrame("Frame", nil, PlayerFrame, "BackdropTemplate")
-    PlayerFrameBK:SetParent(PlayerFrame)
-    PlayerFrameBK:SetPoint("CENTER",PlayerPortrait,"CENTER",0.2,0)
-    PlayerFrameBK:SetSize(71, 71)
-    PlayerFrameBK:SetBackdropColor(0,0,0,0)
-    PlayerFrameBK:SetBackdropBorderColor(0,0,0,0)
-    PlayerFrameBK.tex = PlayerFrameBK:CreateTexture("Interface/Tooltips/UI-Tooltip-Background")
-    PlayerFrameBK.tex:SetAllPoints(PlayerFrameBK)
-    PlayerFrameBK.tex:SetSize(45,45)
-    PlayerFrameBK.tex:SetColorTexture(0,0,0,1);
-    PlayerFrameBK.mask = PlayerFrameBK:CreateMaskTexture()
-    PlayerFrameBK.mask:SetAllPoints(PlayerFrameBK.tex)
-    PlayerFrameBK.mask:SetTexture("Interface/CHARACTERFRAME/TempPortraitAlphaMask", "CLAMPTOBLACKADDITIVE", "CLAMPTOBLACKADDITIVE")
-    PlayerFrameBK.tex:AddMaskTexture(PlayerFrameBK.mask)
-    PlayerFrameBK:SetFrameStrata("BACKGROUND")
-    --PlayerFrameBorder----------
-
-
-    --hpbar background-----------
-    local HpBar = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
-    HpBar:SetParent(PlayerFrameHealthBar)
-    HpBar:SetPoint("LEFT",PlayerFrameHealthBar,"LEFT",-2,0)
-    HpBar:SetScale(1)
-    HpBar:SetWidth(123)
-    HpBar:SetHeight(17)
-    HpBar:SetBackdrop({
-    	bgFile = "Interface/Tooltips/UI-Tooltip-Background",
-    	edgeSize = 0,
-    })
-    HpBar:SetFrameStrata("BACKGROUND")
-    HpBar:SetBackdrop( { 
-        bgFile = "bgFile", 
-        edgeFile = "edgeFile", tile = false, tileSize = 0, edgeSize = 0,
-        edgeSize = 2.5,
-        insets = { left = 0, right =1, top = 0, bottom = 0.5 }
-    });
-    HpBar:SetBackdropColor(0, 0, 1,0.5)
-    HpBar:SetBackdropBorderColor(0, 0, 1,1)
-    --hpbar background-----------
-
-
-    local manaBar = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
-    manaBar:SetParent(PlayerFrameManaBar)
-
-    manaBar:SetPoint("LEFT",PlayerFrameManaBar,"LEFT",-2,0)
-    manaBar:SetScale(1)
-    manaBar:SetWidth(123)
-    manaBar:SetHeight(16)
-    manaBar:SetBackdrop({
-    	bgFile = "Interface/Tooltips/UI-Tooltip-Background",
-    	edgeSize = 0,
-    })
-    manaBar:SetFrameStrata("BACKGROUND")
-    manaBar:SetBackdrop( { 
-        bgFile = "bgFile", 
-        edgeFile = "edgeFile", tile = false, tileSize = 0, edgeSize = 0,
-        edgeSize = 2.5,
-        insets = { left = 0, right =1, top = 0.5, bottom = 0 }
-    });
-    manaBar:SetBackdropColor(0, 0, 1,0.5)
-    manaBar:SetBackdropBorderColor(0, 0, 1,1)
-
     PlayerFrameHealthBarText:ClearAllPoints()
     PlayerFrameHealthBarText:SetPoint("CENTER",PlayerFrameHealthBar,"CENTER",0,0)
     PlayerFrameHealthBar.LeftText:ClearAllPoints()
@@ -88,13 +24,10 @@ function playerFrameChanges(self)
     PlayerFrameManaBar.LeftText:SetPoint("LEFT",PlayerFrameManaBar,"LEFT",1,0)
     PlayerFrameManaBar.RightText:SetPoint("RIGHT",PlayerFrameManaBar,"RIGHT",-1,0)
 
-
     PlayerFrameManaBarText:ClearAllPoints()
     PlayerFrameManaBarText:SetPoint("CENTER",PlayerFrameManaBar,"CENTER",0,0)
     PlayerFrame.name:ClearAllPoints()
     PlayerFrame.name:SetPoint("CENTER",PlayerFrameHealthBar,"CENTER",0,15)
-
-    
 end
 
 function targetAndFocusChanges(self)
@@ -113,25 +46,6 @@ function targetAndFocusChanges(self)
     TargetFrameHealthBar:SetPoint("LEFT",TargetFrame,"LEFT",4,14)
     TargetFrameManaBar:SetPoint("BOTTOM",TargetFrameHealthBar,"BOTTOM",0,-14)
 
-
-    --PlayerFrameBorder----------
-    local TargetFrameBK = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
-    TargetFrameBK:SetPoint("CENTER",TargetFramePortrait,"CENTER",0.2,0)
-    TargetFrameBK:SetSize(71, 71)
-    TargetFrameBK:SetBackdropColor(0,0,0,0)
-    TargetFrameBK:SetBackdropBorderColor(0,0,0,0)
-    TargetFrameBK.tex = TargetFrameBK:CreateTexture("Interface/Tooltips/UI-Tooltip-Background")
-    TargetFrameBK.tex:SetAllPoints(TargetFrameBK)
-    TargetFrameBK.tex:SetSize(45,45)
-    TargetFrameBK.tex:SetColorTexture(0,0,0,1);
-    TargetFrameBK.mask = TargetFrameBK:CreateMaskTexture()
-    TargetFrameBK.mask:SetAllPoints(TargetFrameBK.tex)
-    TargetFrameBK.mask:SetTexture("Interface/CHARACTERFRAME/TempPortraitAlphaMask", "CLAMPTOBLACKADDITIVE", "CLAMPTOBLACKADDITIVE")
-    TargetFrameBK.tex:AddMaskTexture(TargetFrameBK.mask)
-    TargetFrameBK:SetParent(TargetFrame)
-    TargetFrameBK:SetFrameStrata("BACKGROUND")
-    --PlayerFrameBorder----------
-
     TargetFrameHealthBar.TextString:ClearAllPoints()
     TargetFrameHealthBar.TextString:SetPoint("CENTER",TargetFrameHealthBar,"CENTER",0,0)
     TargetFrameHealthBar.LeftText:ClearAllPoints()
@@ -149,47 +63,21 @@ function targetAndFocusChanges(self)
 
     TargetFrame.nameBackground:Hide()
 
-
-
     ---------------focus
-
     FocusFrameTextureFrameTexture:Hide()
     FocusFrameBackground:Hide()
     FocusFrameToTBackground:Hide()
     FocusFrameToTHealthBar:SetHeight(8)
     FocusFrameToTManaBar:SetHeight(8)
 
-
-
     FocusFrameHealthBar:ClearAllPoints()
     FocusFrameManaBar:ClearAllPoints()
     FocusFrameHealthBar:SetParent(FocusFrame)
     FocusFrameManaBar:SetParent(FocusFrame)
-
     FocusFrameHealthBar:SetHeight(12)
     FocusFrameManaBar:SetHeight(12)
     FocusFrameHealthBar:SetPoint("LEFT",FocusFrame,"LEFT",4,14)
     FocusFrameManaBar:SetPoint("BOTTOM",FocusFrameHealthBar,"BOTTOM",0,-14)
-
-
-    --PlayerFrameBorder----------
-    local FocusFrameBK = CreateFrame("Frame", nil, FocusFrame, "BackdropTemplate")
-    FocusFrameBK:SetParent(FocusFrame)
-    FocusFrameBK:SetPoint("CENTER",FocusFramePortrait,"CENTER",0.2,0)
-    FocusFrameBK:SetSize(71, 71)
-    FocusFrameBK:SetBackdropColor(0,0,0,0)
-    FocusFrameBK:SetBackdropBorderColor(0,0,0,0)
-    FocusFrameBK.tex = FocusFrameBK:CreateTexture("Interface/Tooltips/UI-Tooltip-Background")
-    FocusFrameBK.tex:SetAllPoints(FocusFrameBK)
-    FocusFrameBK.tex:SetSize(45,45)
-    FocusFrameBK.tex:SetColorTexture(0,0,0,1);
-    FocusFrameBK.mask = FocusFrameBK:CreateMaskTexture()
-    FocusFrameBK.mask:SetAllPoints(FocusFrameBK.tex)
-    FocusFrameBK.mask:SetTexture("Interface/CHARACTERFRAME/TempPortraitAlphaMask", "CLAMPTOBLACKADDITIVE", "CLAMPTOBLACKADDITIVE")
-    FocusFrameBK.tex:AddMaskTexture(FocusFrameBK.mask)
-    FocusFrameBK:SetParent(FocusFrame)
-    FocusFrameBK:SetFrameStrata("BACKGROUND")
-    --PlayerFrameBorder----------
 
     FocusFrameHealthBar.TextString:ClearAllPoints()
     FocusFrameHealthBar.TextString:SetPoint("CENTER",FocusFrameHealthBar,"CENTER",0,0)
@@ -207,7 +95,6 @@ function targetAndFocusChanges(self)
     FocusFrame.name:SetPoint("CENTER",FocusFrameHealthBar,"CENTER",0,15)
 
     FocusFrame.nameBackground:Hide()
-
 
     TargetFrameToT:ClearAllPoints()
     TargetFrameToT:SetPoint("RIGHT",TargetFrame,"RIGHT",25,-40)
@@ -358,6 +245,106 @@ PetManaBarBK:SetBackdrop( {
 });
 PetManaBarBK:SetBackdropColor(0, 0, 1,0.5)
 PetManaBarBK:SetBackdropBorderColor(0, 0, 1,1)
+
+
+
+--PlayerFrameBorder----------
+local TargetFrameBK = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
+TargetFrameBK:SetParent(TargetFrame)
+TargetFrameBK:SetPoint("CENTER",TargetFramePortrait,"CENTER",0.2,0)
+TargetFrameBK:SetSize(71, 71)
+TargetFrameBK:SetBackdropColor(0,0,0,0)
+TargetFrameBK:SetBackdropBorderColor(0,0,0,0)
+TargetFrameBK.tex = TargetFrameBK:CreateTexture("Interface/Tooltips/UI-Tooltip-Background")
+TargetFrameBK.tex:SetAllPoints(TargetFrameBK)
+TargetFrameBK.tex:SetSize(45,45)
+TargetFrameBK.tex:SetColorTexture(0,0,0,1);
+TargetFrameBK.mask = TargetFrameBK:CreateMaskTexture()
+TargetFrameBK.mask:SetAllPoints(TargetFrameBK.tex)
+TargetFrameBK.mask:SetTexture("Interface/CHARACTERFRAME/TempPortraitAlphaMask", "CLAMPTOBLACKADDITIVE", "CLAMPTOBLACKADDITIVE")
+TargetFrameBK.tex:AddMaskTexture(TargetFrameBK.mask)
+TargetFrameBK:SetParent(TargetFrame)
+TargetFrameBK:SetFrameStrata("BACKGROUND")
+--PlayerFrameBorder----------
+
+--PlayerFrameBorder----------
+local FocusFrameBK = CreateFrame("Frame", nil, FocusFrame, "BackdropTemplate")
+FocusFrameBK:SetParent(FocusFrame)
+FocusFrameBK:SetPoint("CENTER",FocusFramePortrait,"CENTER",0.2,0)
+FocusFrameBK:SetSize(71, 71)
+FocusFrameBK:SetBackdropColor(0,0,0,0)
+FocusFrameBK:SetBackdropBorderColor(0,0,0,0)
+FocusFrameBK.tex = FocusFrameBK:CreateTexture("Interface/Tooltips/UI-Tooltip-Background")
+FocusFrameBK.tex:SetAllPoints(FocusFrameBK)
+FocusFrameBK.tex:SetSize(45,45)
+FocusFrameBK.tex:SetColorTexture(0,0,0,1);
+FocusFrameBK.mask = FocusFrameBK:CreateMaskTexture()
+FocusFrameBK.mask:SetAllPoints(FocusFrameBK.tex)
+FocusFrameBK.mask:SetTexture("Interface/CHARACTERFRAME/TempPortraitAlphaMask", "CLAMPTOBLACKADDITIVE", "CLAMPTOBLACKADDITIVE")
+FocusFrameBK.tex:AddMaskTexture(FocusFrameBK.mask)
+FocusFrameBK:SetParent(FocusFrame)
+FocusFrameBK:SetFrameStrata("BACKGROUND")
+--PlayerFrameBorder----------
+
+--PlayerFrameBorder----------
+local PlayerFrameBK = CreateFrame("Frame", nil, PlayerFrame, "BackdropTemplate")
+PlayerFrameBK:SetParent(PlayerFrame)
+PlayerFrameBK:SetPoint("CENTER",PlayerPortrait,"CENTER",0.2,0)
+PlayerFrameBK:SetSize(71, 71)
+PlayerFrameBK:SetBackdropColor(0,0,0,0)
+PlayerFrameBK:SetBackdropBorderColor(0,0,0,0)
+PlayerFrameBK.tex = PlayerFrameBK:CreateTexture("Interface/Tooltips/UI-Tooltip-Background")
+PlayerFrameBK.tex:SetAllPoints(PlayerFrameBK)
+PlayerFrameBK.tex:SetSize(45,45)
+PlayerFrameBK.tex:SetColorTexture(0,0,0,1);
+PlayerFrameBK.mask = PlayerFrameBK:CreateMaskTexture()
+PlayerFrameBK.mask:SetAllPoints(PlayerFrameBK.tex)
+PlayerFrameBK.mask:SetTexture("Interface/CHARACTERFRAME/TempPortraitAlphaMask", "CLAMPTOBLACKADDITIVE", "CLAMPTOBLACKADDITIVE")
+PlayerFrameBK.tex:AddMaskTexture(PlayerFrameBK.mask)
+PlayerFrameBK:SetFrameStrata("BACKGROUND")
+--PlayerFrameBorder----------
+
+--hpbar background-----------
+local PlayerHpBar = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
+PlayerHpBar:SetParent(PlayerFrameHealthBar)
+PlayerHpBar:SetPoint("LEFT",PlayerFrameHealthBar,"LEFT",-2,0)
+PlayerHpBar:SetScale(1)
+PlayerHpBar:SetWidth(123)
+PlayerHpBar:SetHeight(17)
+PlayerHpBar:SetBackdrop({
+    bgFile = "Interface/Tooltips/UI-Tooltip-Background",
+    edgeSize = 0,
+})
+PlayerHpBar:SetFrameStrata("BACKGROUND")
+PlayerHpBar:SetBackdrop( { 
+    bgFile = "bgFile", 
+    edgeFile = "edgeFile", tile = false, tileSize = 0, edgeSize = 0,
+    edgeSize = 2.5,
+    insets = { left = 0, right =1, top = 0, bottom = 0.5 }
+});
+PlayerHpBar:SetBackdropColor(0, 0, 1,0.5)
+PlayerHpBar:SetBackdropBorderColor(0, 0, 1,1)
+--hpbar background-----------
+
+local PlayermanaBar = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
+PlayermanaBar:SetParent(PlayerFrameManaBar)
+PlayermanaBar:SetPoint("LEFT",PlayerFrameManaBar,"LEFT",-2,0)
+PlayermanaBar:SetScale(1)
+PlayermanaBar:SetWidth(123)
+PlayermanaBar:SetHeight(16)
+PlayermanaBar:SetBackdrop({
+	bgFile = "Interface/Tooltips/UI-Tooltip-Background",
+	edgeSize = 0,
+})
+PlayermanaBar:SetFrameStrata("BACKGROUND")
+PlayermanaBar:SetBackdrop( { 
+    bgFile = "bgFile", 
+    edgeFile = "edgeFile", tile = false, tileSize = 0, edgeSize = 0,
+    edgeSize = 2.5,
+    insets = { left = 0, right =1, top = 0.5, bottom = 0 }
+});
+PlayermanaBar:SetBackdropColor(0, 0, 1,0.5)
+PlayermanaBar:SetBackdropBorderColor(0, 0, 1,1)
 
 PetName:Hide()
 PetFrameHealthBar:ClearAllPoints()
