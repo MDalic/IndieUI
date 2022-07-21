@@ -27,6 +27,22 @@ function playerFrameChanges(self)
     PlayerFrameManaBarText:SetPoint("CENTER",PlayerFrameManaBar,"CENTER",0,0)
     PlayerFrame.name:ClearAllPoints()
     PlayerFrame.name:SetPoint("CENTER",PlayerFrameHealthBar,"CENTER",0,15)
+    local PlayerFramelvlBK = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
+    PlayerFramelvlBK:SetPoint("CENTER",PlayerLevelText,"CENTER",0.2,0)
+    PlayerFramelvlBK:SetSize(20, 20)
+    PlayerFramelvlBK:SetBackdropColor(0,0,0,0)
+    PlayerFramelvlBK:SetBackdropBorderColor(0,0,0,0)
+    PlayerFramelvlBK.tex = PlayerFramelvlBK:CreateTexture("Interface/Tooltips/UI-Tooltip-Background")
+    PlayerFramelvlBK.tex:SetAllPoints(PlayerFramelvlBK)
+    PlayerFramelvlBK.tex:SetSize(45,45)
+    PlayerFramelvlBK.tex:SetColorTexture(0,0,0,1);
+    PlayerFramelvlBK.mask = PlayerFramelvlBK:CreateMaskTexture()
+    PlayerFramelvlBK.mask:SetAllPoints(PlayerFramelvlBK.tex)
+    PlayerFramelvlBK.mask:SetTexture("Interface/CHARACTERFRAME/TempPortraitAlphaMask", "CLAMPTOBLACKADDITIVE", "CLAMPTOBLACKADDITIVE")
+    PlayerFramelvlBK.tex:AddMaskTexture(PlayerFramelvlBK.mask)
+    PlayerFramelvlBK:SetFrameStrata("LOW")
+    PlayerFramelvlBK:SetParent(PlayerFrame)
+    PlayerLevelText:SetFrameStrata("MEDIUM")
 end
 
 function targetAndFocusChanges(self)
@@ -109,6 +125,8 @@ end
 hooksecurefunc("TargetFrame_CheckClassification", targetAndFocusChanges)
 hooksecurefunc("PlayerFrame_ToPlayerArt", playerFrameChanges)
 hooksecurefunc("TargetFrame_UpdateDebuffAnchor", function(_, name, i) _G[name..i]:SetScale(1.1) end)
+hooksecurefunc("TargetFrame_UpdateBuffAnchor", function(_, name, i) _G[name..i]:SetScale(1.1) end)
+
 
 
 
@@ -273,6 +291,44 @@ PetManaBarBK:SetBackdropBorderColor(0, 0, 1,1)
 
 
 --PlayerFrameBorder----------
+local TargetFramelvlBK = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
+TargetFramelvlBK:SetPoint("CENTER",TargetFrameTextureFrameLevelText,"CENTER",0.2,0)
+TargetFramelvlBK:SetSize(20, 20)
+TargetFramelvlBK:SetBackdropColor(0,0,0,0)
+TargetFramelvlBK:SetBackdropBorderColor(0,0,0,0)
+TargetFramelvlBK.tex = TargetFramelvlBK:CreateTexture("Interface/Tooltips/UI-Tooltip-Background")
+TargetFramelvlBK.tex:SetAllPoints(TargetFramelvlBK)
+TargetFramelvlBK.tex:SetSize(45,45)
+TargetFramelvlBK.tex:SetColorTexture(0,0,0,1);
+TargetFramelvlBK.mask = TargetFramelvlBK:CreateMaskTexture()
+TargetFramelvlBK.mask:SetAllPoints(TargetFramelvlBK.tex)
+TargetFramelvlBK.mask:SetTexture("Interface/CHARACTERFRAME/TempPortraitAlphaMask", "CLAMPTOBLACKADDITIVE", "CLAMPTOBLACKADDITIVE")
+TargetFramelvlBK.tex:AddMaskTexture(TargetFramelvlBK.mask)
+TargetFramelvlBK:SetFrameStrata("LOW")
+TargetFramelvlBK:SetParent(TargetFrame)
+TargetFrameTextureFrame:SetFrameStrata("MEDIUM")
+
+
+
+local FocusFramelvlBK = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
+FocusFramelvlBK:SetPoint("CENTER",FocusFrameTextureFrameLevelText,"CENTER",0.2,0)
+FocusFramelvlBK:SetSize(20, 20)
+FocusFramelvlBK:SetBackdropColor(0,0,0,0)
+FocusFramelvlBK:SetBackdropBorderColor(0,0,0,0)
+FocusFramelvlBK.tex = FocusFramelvlBK:CreateTexture("Interface/Tooltips/UI-Tooltip-Background")
+FocusFramelvlBK.tex:SetAllPoints(FocusFramelvlBK)
+FocusFramelvlBK.tex:SetSize(45,45)
+FocusFramelvlBK.tex:SetColorTexture(0,0,0,1);
+FocusFramelvlBK.mask = FocusFramelvlBK:CreateMaskTexture()
+FocusFramelvlBK.mask:SetAllPoints(FocusFramelvlBK.tex)
+FocusFramelvlBK.mask:SetTexture("Interface/CHARACTERFRAME/TempPortraitAlphaMask", "CLAMPTOBLACKADDITIVE", "CLAMPTOBLACKADDITIVE")
+FocusFramelvlBK.tex:AddMaskTexture(FocusFramelvlBK.mask)
+FocusFramelvlBK:SetFrameStrata("LOW")
+FocusFramelvlBK:SetParent(FocusFrame)
+FocusFrameTextureFrame:SetFrameStrata("MEDIUM")
+
+
+
 local TargetFrameBK = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
 TargetFrameBK:SetParent(TargetFrame)
 TargetFrameBK:SetPoint("CENTER",TargetFramePortrait,"CENTER",0.2,0)
